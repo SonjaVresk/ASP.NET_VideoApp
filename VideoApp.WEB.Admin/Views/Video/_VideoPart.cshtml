@@ -1,0 +1,67 @@
+﻿@model IEnumerable<VideoApp.BL.BLModels.BLVideo>
+
+@*@functions {
+    public string ConvertSeconds(int totalSeconds)
+    {
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        return $"{hours}h {minutes}m";
+    }
+}*@
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedAt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StreamingUrl)
+        </td>
+@*        <td>
+            @Html.DisplayFor(modelItem => item.ImageId)
+        </td>*@
+        <td>
+            <div style="max-height: 7em; overflow-y: auto;">
+                @Html.DisplayFor(modelItem => item.Image.Content)
+            </div>
+        </td>
+        <td>
+            @foreach (var tag in item.Tags)
+            {
+                @Html.DisplayFor(modelItem => tag)
+                <br />
+            }
+        </td>
+        <td style="white-space: wrap" class="text-end">
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class="btn btnDetails mt-1"})<br />
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class="btn btnEdit mt-1"})<br />
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class="btn btnDelete mt-1"})
+        </td>
+    </tr>
+}
+
+
+<style>
+    td{
+        max-width:80px;
+        word-wrap: break-word;
+        font-weight: 600;
+    }
+    
+</style>

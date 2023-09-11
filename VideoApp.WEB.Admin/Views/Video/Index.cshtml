@@ -1,0 +1,168 @@
+﻿@model IEnumerable<VideoApp.BL.BLModels.BLVideo>
+
+@{
+    var page = (int)ViewData["page"];
+    var size = (int)ViewData["size"];
+    var orderBy = (string)ViewData["orderBy"];
+    var direction = (string)ViewData["direction"];
+    var pages = (int)ViewData["pages"];
+}
+
+<h1 class="alert">Videos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btnCreateNew">Create New</a>
+</p>
+
+<form method="get" action="@Url.Action("Index")" id="formName" class="d-flex">
+    <div class="form-group">
+        <label for="filterName">Search video by name:</label>
+        <input type="search" class="form-control col-lg-4" name="filterName" id="filterName" value="@ViewBag.FilterName">
+    </div>
+    <button type="submit" class="btn btn-light mt-4 ms-lg-2" data-action="name" value="true" name="searchName">Search</button>
+</form>
+<form method="get" action="@Url.Action("Index")" id="formGenre" class="d-flex mb-5">
+    <div class="form-group">
+        <label for="filterGenre" class="mr-4">Search video by genre:</label>
+        <input type="search" class="form-control col-lg-4" name="filterGenre" id="filterGenre" value="@ViewBag.FilterGenre">
+    </div>
+    <button type="submit" class="btn btn-light mt-4 ms-lg-2" data-action="genre" value="true" name="searchGenre">Search</button>
+</form>
+
+
+<table class="table table-sm" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StreamingUrl)
+            </th>
+@*            <th>
+                @Html.DisplayNameFor(model => model.ImageId)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tags)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="videoPart">
+        <partial name="_VideoPart"/>
+    </tbody>
+</table>
+
+<!--Paging:-->
+<div class="btn-group">
+    @for (var i = 0; i < pages; i++)
+    {
+        var currClass = page == i ? "btn-light" : "btn-outline-light";
+        <a asp-action="Index"
+        asp-route-page="@i"
+        asp-route-size="@size"
+        asp-route-orderBy="@orderBy"
+        asp-route-direction="@direction"
+        data-page="@i"
+        class="pager-btn btn @currClass">@(i + 1)</a>
+    }
+</div>
+
+
+@section Scripts {
+    <script>
+        // Paging: 
+        $(".pager-btn").click(function (event) {
+            console.log("Pager button clicked");
+            event.preventDefault();
+
+            // No data was sent to the server, that's why we always get the first page
+            // Let's fix that
+            var page = $(this).data("page");
+
+            var ajaxData = {
+                page: page,
+                size: @size,
+                orderBy: "@orderBy",
+                direction: "@direction"
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "/Video/VideoPartial",
+                data: ajaxData,
+                success: function (data) {
+                    $("#videoPart").html(data);
+
+                    //selected page number:
+                    $(".pager-btn").removeClass("btn-light");
+                    $(".pager-btn").addClass("btn-outline-light");
+
+                    $(".pager-btn[data-page=" + page + "]").removeClass("btn-outline-light");
+                    $(".pager-btn[data-page=" + page + "]").addClass("btn-light");
+                },
+                error: function (data) {
+                    console.error("Ajax GET error", data);
+                }
+            });
+        });
+
+        // Pohrana filtera u localstorage:
+        // Provjera ima li već filtera:       
+        //var filterNameValue = localStorage.getItem('filterName');
+        //var filterGenreValue = localStorage.getItem('filterGenre');
+
+        //// Set the filter values if they exist
+        //if (filterNameValue) {
+        //    document.getElementById('filterName').value = filterNameValue;
+        //}
+        //if (filterGenreValue) {
+        //    document.getElementById('filterGenre').value = filterGenreValue;
+        //}
+
+        //// Save the filterName value to localStorage when the name form is submitted
+        //document.getElementById('formName').addEventListener('submit', function (event) {
+        //    var filterName = document.getElementById('filterName').value;
+        //    localStorage.setItem('filterName', filterName);
+        //});
+
+        //// Save the filterGenre value to localStorage when the genre form is submitted
+        //document.getElementById('formGenre').addEventListener('submit', function (event) {
+        //    var filterGenre = document.getElementById('filterGenre').value;
+        //    localStorage.setItem('filterGenre', filterGenre);
+        //});
+
+        //$(document).ready(function () {
+        //    $("#autocomplete").autocomplete({
+        //        source: "GetFilteredVideos",
+        //        select: function (event, ui) {
+        //            // Prevents default behavior
+        //            event.preventDefault();
+
+        //            // Sets label to the input textbox, not value
+        //            $("#autocomplete").val(ui.item.label);
+        //            console.log(ui.item.label);
+        //        },                
+        //    });
+        //});
+
+    </script>
+}

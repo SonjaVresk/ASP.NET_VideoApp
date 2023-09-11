@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Obavijesti</title>
+</head>
+<body>
+    <h1>Obavijest</h1>
+    <hr />
+    <p>Unsent Notifications: <span id="unsent-notification-count"></span></p>
+
+    <div id="unsent-notifications-container"></div>
+
+    <button id="send-notifications-btn" type="submit">Send Unsent Notifications</button>
+
+    <script>
+        // Pohrana podataka u local storage
+        function storeNotifications(notifications) {
+            localStorage.setItem('unsentNotifications', JSON.stringify(notifications));
+        }
+
+        // fetch za broj neposlanih notifikacija
+        function getUnsentNotificationCount() {
+            const unsentNotifications = JSON.parse(localStorage.getItem('unsentNotifications'));
+            if (unsentNotifications) {
+                document.getElementById('unsent-notification-count').textContent = unsentNotifications.length;
+                showUnsentNotifications(unsentNotifications);
+            } else {
+                fetch('/api/notification/count')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('unsent-notification-count').textContent = data.count;
+                        // Fetch neposlanih ako je > 0
+                        if (data.count > 0) {
+                            fetchUnsentNotifications();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+        }
+
+        // Fetch neposlanih
+        function fetchUnsentNotifications() {
+            fetch('/api/notification/unsent')
+                .then(response => response.json())
+                .then(data => {
+                    storeNotifications(data); // Pohrana u local storage
+                    showUnsentNotifications(data); // Prikaži notifikacije
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Prikaz notifikacija
+        function showUnsentNotifications(notifications) {
+            const notificationsContainer = document.getElementById('unsent-notifications-container');
+            notificationsContainer.innerHTML = ''; // Brisanje prijašnjih notifikacija
+
+            // Izrada HTML-a za svaku notifikaciju
+            notifications.forEach(notification => {
+                const notificationDiv = document.createElement('div');
+                const subject = document.createElement('h2');
+                subject.textContent = notification.subject;
+                const body = document.createElement('p');
+                body.textContent = notification.body;
+
+                const sendButton = document.createElement('button');
+                sendButton.textContent = 'Send Notification';
+                sendButton.addEventListener('click', () => sendNotification(notification.id));
+
+                notificationDiv.appendChild(subject);
+                notificationDiv.appendChild(body);
+                notificationDiv.appendChild(sendButton);
+
+                notificationsContainer.appendChild(notificationDiv);
+            });
+        }
+
+        // Slanje notifikacija
+        function sendNotification(id) {
+            fetch(`/api/notification/send?id=${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Notification sent successfully.');
+                        removeNotification(id); // ukloni iz local storage poslane notifikacije
+                        getUnsentNotificationCount(); // update liste
+                    } else {
+                        throw new Error('Failed to send notification.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Brisanje iz local storage poslanih notifikacija
+        function removeNotification(id) {
+            const unsentNotifications = JSON.parse(localStorage.getItem('unsentNotifications'));
+            if (unsentNotifications) {
+                const updatedNotifications = unsentNotifications.filter(notification => notification.id !== id);
+                storeNotifications(updatedNotifications);
+            }
+        }
+
+        // slanje notifikacija
+        const sendNotificationsBtn = document.getElementById('send-notifications-btn');
+        sendNotificationsBtn.addEventListener('click', sendNotification);
+
+        getUnsentNotificationCount();
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<VideoApp.WEB.Admin.ViewModels.VMCountry>
+
+@{
+    var page = (int)ViewData["page"];
+    var size = (int)ViewData["size"];
+    var orderBy = (string)ViewData["orderBy"];
+    var direction = (string)ViewData["direction"];
+    var pages = (int)ViewData["pages"];
+}
+
+<h1 class="alert">Countries</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="countriesPart">
+        <partial name="_CountryPart" />
+    </tbody>
+</table>
+
+<!--Paging:-->
+<div class="btn-group">
+    @for (var i = 0; i <= pages; i++)
+    {
+        var currClass = page == i ? "btn-light" : "btn-outline-light";
+        <a asp-action="Index"
+       asp-route-page="@i"
+       asp-route-size="@size"
+       asp-route-orderBy="@orderBy"
+       asp-route-direction="@direction"
+           data-page="@i"
+           class="pager-btn btn @currClass">@(i + 1)</a>
+    }
+</div>
+
+@section Scripts {
+    <script>
+
+        $(".pager-btn").click(function (event) {
+            console.log("Pager button clicked");
+            event.preventDefault();
+
+            var page = $(this).data("page");
+
+            var ajaxData = {
+                page: page,
+                size: @size,
+                orderBy: "@orderBy",
+                direction: "@direction"
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "/Country/CountryPartial",
+                data: ajaxData,
+                success: function (data) {
+                    $("#countriesPart").html(data);
+
+                    //selected page number:
+                    $(".pager-btn").removeClass("btn-light");
+                    $(".pager-btn").addClass("btn-outline-light");
+
+                    $(".pager-btn[data-page=" + page + "]").removeClass("btn-outline-light");
+                    $(".pager-btn[data-page=" + page + "]").addClass("btn-light");
+                },
+                error: function (data) {
+                    console.error("Ajax GET error", data);
+                }
+            });
+        });
+    </script>
+}

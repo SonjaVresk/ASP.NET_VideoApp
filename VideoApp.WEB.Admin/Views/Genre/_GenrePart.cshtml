@@ -1,0 +1,28 @@
+﻿@model IEnumerable<VideoApp.BL.BLModels.BLGenre>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @foreach (var video in item.Videos)
+            {
+                @Html.DisplayFor(modelItem => video)
+                <br />
+            }
+        </td>
+        <td style="white-space: nowrap;" class="text-end">
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class="btn btnDetails"})
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class="btn btnEdit"})
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class="btn btnDelete"})
+        </td>
+    </tr>
+}

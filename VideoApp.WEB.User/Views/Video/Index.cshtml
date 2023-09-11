@@ -1,0 +1,88 @@
+﻿@using VideoApp.WEB.User.ViewModels;
+
+@{
+    List<VMVideo> videos = ViewData["videos"] as List<VMVideo>;
+    int numRows = 2;
+    //int cardsPerRow = videos.Count / numRows;
+    //int cardsPerRow = 3;
+    int cardsPerRow = Math.Max(videos.Count / numRows, 1);
+
+    var page = (int)ViewData["page"];
+    var pages = (int)ViewData["pages"];
+    var size = (int)ViewData["size"];
+    var orderBy = (string)ViewData["orderBy"];
+    var direction = (string)ViewData["direction"];
+}
+<section>
+    <header class="text-center">
+        <h2 class="alert">Video Gallery</h2>
+        <p></p>
+    </header>
+
+    <form method="get" action="@Url.Action("Index")">
+        <div class="form-group col-4">
+            <label for="filter">Search video:</label>
+            <input type="text" class="form-control" name="filter" id="filter" value="@ViewBag.Filter">
+        </div>
+        <button type="submit" class="btn mt-3 mb-4">Search</button>
+    </form>
+          
+    <div id="videosPart" class="container">
+
+        <partial name="_VideoPartial" />
+    </div>
+
+<div class="btn-group">
+@for (int i = 0; i < pages; i++)
+    {
+            var currClass = page == i ? "btn-light" : "btn btn-outline-light";
+            <a asp-action="Index" 
+               asp-route-page="@i" 
+               asp-route-size="@size"
+               asp-route-orderBy="@orderBy"
+               asp-route-direction="@direction"
+               data-page="@i"
+               class="pager-btn btn @currClass">@(i + 1)</a>
+    }
+
+</div>
+</section>
+
+@section Scripts{
+    <script>
+        $(".pager-btn").click(function (event) {
+            console.log("Pager button clicked");
+            event.preventDefault();
+
+            // No data was sent to the server, that's why we always get the first page
+            // Let's fix that
+            var page = $(this).data("page");
+
+            var ajaxData = {
+                page: page,
+                size: @size,
+                orderBy: "@orderBy",
+                direction: "@direction",                
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "/Video/VideoPartial",
+                data: ajaxData,
+                success: function (data) {
+                    $("#videosPart").html(data);
+
+                    //selected page number:
+                    $(".pager-btn").removeClass("btn-light");
+                    $(".pager-btn").addClass("btn-outline-light");
+
+                    $(".pager-btn[data-page=" + page + "]").removeClass("btn-outline-light");
+                    $(".pager-btn[data-page=" + page + "]").addClass("btn-light");
+                },
+                error: function (data) {
+                    console.error("Ajax GET error", data);
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,162 @@
+﻿@using System.Net;
+@model IEnumerable<VideoApp.BL.BLModels.BLUser>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="alert">Users</h1>
+
+<p>
+    <a asp-action="Register" class="btn btnCreateNew">Create New</a>
+</p>
+<form method="get" action="@Url.Action("Index")" id="searchForm" class="d-flex mb-4">
+    <div class="form-group col-lg-2 m-1">
+        <input type="search" class="form-control" name="filterFirstName" id="filterFirstName" value="@ViewBag.filterFirstName" placeholder="Search by First name:">
+    </div>
+    <div class="form-group col-lg-2 m-1">
+        <input type="search" class="form-control" name="filterLastName" id="filterLastName" value="@ViewBag.filterLastName" placeholder="Search by Last name:">
+    </div>
+    <div class="form-group col-lg-2 m-1">
+        <input type="search" class="form-control" name="filterUserName" id="filterUserName" value="@ViewBag.filterUserName" placeholder="Search by Username:">
+    </div>
+    <div class="form-group col-lg-2 m-1">
+        <input type="search" class="form-control" name="filterCountry" id="filterCountry" value="@ViewBag.filterCountry" placeholder="Search by Country:">
+    </div>
+    </br>
+    <button type="submit" class="btn ms-lg-2" value="true" name="searchFilters">Search</button>
+</form>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeletedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsConfirmed)
+            </th>
+@*            <th>                
+                @Html.DisplayNameFor(model => model.SecurityToken)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.CountryOfResidence)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeletedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsConfirmed)
+            </td>
+@*            <td>
+                @{ var encodedToken = WebUtility.UrlEncode(item.SecurityToken); }
+                    @encodedToken
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryOfResidence)
+            </td>
+                <td style="white-space: nowrap" class="text-end">
+                    @*<a asp-action="ValidateEmail" asp-route-email="@item.Email" asp-route-securitytoken="@item.SecurityToken" class="btn btn-outline-primary">Validate</a>*@
+                    @Html.ActionLink("Details", "Details",  new { id=item.Id }, new { @class="btn btnDetails"})
+                    @Html.ActionLink("Edit", "Edit",  new { id=item.Id }, new { @class="btn btnEdit"})
+                    @Html.ActionLink("Delete", "Delete",  new { id=item.Id }, new { @class="btn btnDelete"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+
+        //var filterFirstNameValue = localStorage.getItem('filterFirstName');
+        //var filterLastNameValue = localStorage.getItem('filterLastName');
+        //var filterUserNameValue = localStorage.getItem('filterUserName');
+        //var filterCountryValue = localStorage.getItem('filterCountry');
+
+        //// Set the filter values if they exist
+        //if (filterFirstNameValue) {
+        //    document.getElementById('filterFirstName').value = filterFirstNameValue;
+        //}
+        //if (filterLastNameValue) {
+        //    document.getElementById('filterLastName').value = filterLastNameValue;
+        //}
+        //if (filterUserNameValue) {
+        //    document.getElementById('filterUserName').value = filterUserNameValue;
+        //}
+        //if (filterCountryValue) {
+        //    document.getElementById('filterCountry').value = filterCountryValue;
+        //}
+
+        //// Save the filter value to localStorage when the name form is submitted
+        //document.getElementById('formFirstName').addEventListener('submit', function (event) {
+        //    var filterFirstName = document.getElementById('filterFirstName').value;
+        //    localStorage.setItem('filterFirstName', filterFirstName);
+        //});
+
+        //document.getElementById('formLastName').addEventListener('submit', function (event) {
+        //    var filterLastName = document.getElementById('filterLastName').value;
+        //    localStorage.setItem('filterLastName', filterLastName);
+        //});
+
+        //document.getElementById('formUserName').addEventListener('submit', function (event) {
+        //    var filterUserName = document.getElementById('filterUserName').value;
+        //    localStorage.setItem('filterUserName', filterUserName);
+        //});
+
+        //document.getElementById('formCountry').addEventListener('submit', function (event) {
+        //    var filterCountry = document.getElementById('filterCountry').value;
+        //    localStorage.setItem('filterCountry', filterCountry);
+        //});
+    </script>
+}

@@ -1,0 +1,129 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = VideoApp.WEB.Admin
+build_property.RootNamespace = VideoApp.WEB.Admin
+build_property.ProjectDir = C:\Users\s_vre\Desktop\ASP.NET_VideoApp\VideoApp.WEB.Admin\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Users\s_vre\Desktop\ASP.NET_VideoApp\VideoApp.WEB.Admin
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Country/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Country/_CountryPart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291bnRyeVxfQ291bnRyeVBhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Genre/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Genre/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Genre/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Genre/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Genre/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Genre/_GenrePart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVcX0dlbnJlUGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Tag/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFnXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Tag/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFnXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Tag/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFnXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Tag/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFnXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Tag/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFnXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/User/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/User/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/User/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/User/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Video/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlkZW9cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Video/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlkZW9cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Video/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlkZW9cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Video/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlkZW9cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Video/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlkZW9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Video/_VideoPart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlkZW9cX1ZpZGVvUGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/s_vre/Desktop/ASP.NET_VideoApp/VideoApp.WEB.Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-66am24f710

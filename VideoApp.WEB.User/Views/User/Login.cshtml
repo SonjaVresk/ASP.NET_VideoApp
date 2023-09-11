@@ -1,0 +1,91 @@
+﻿@model VideoApp.WEB.User.ViewModels.VMLogin
+
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="divCenter">
+
+    <h1 class="alert mt-2">Login</h1>
+
+    <div class="row">
+        <div class="col-md-12 p-3">
+            <form asp-action="Login">
+            
+                <div class="form-group">
+                    <label asp-for="Username" class="control-label"></label>
+                    <input asp-for="Username" id="username" class="form-control" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" id="password" type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="StaySignedIn" /> @Html.DisplayNameFor(model => model.StaySignedIn)
+                    </label>
+                </div>       
+                    <input type="hidden" asp-for="RedirectUrl" class="form-control" />         
+                <div class="form-group mt-5">
+                    <input type="submit" value="Sign in" id="btnSubmit" class="btn col-12" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-1 p-2">
+        <a class="btnLink" asp-action="Register">Don't have an account? <span style="font-weight:700">Register here</span></a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {               
+        $("#btnSubmit").click(function () {
+            console.log("Button Submit clicked");
+
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var data = {
+                "username": username,
+                "password": password
+                };
+            var serializedJson = JSON.stringify(data);
+
+            $.ajax({
+                type: "POST",
+                url: "/User/JwtTokens",
+                data: serializedJson,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                success: function(data) {
+                    console.log("Ajax POST success");
+                    console.log(data);                  
+                    localStorage.setItem("jwt", data.token);
+                },
+                error: function (data) {
+                    console.log("Ajax POST error");
+                    console.log(data);
+                }
+            });
+        });
+
+        //$("#btnSubmit").click(async function () {
+        //    console.log("Button Submit clicked");
+
+        //    const response = await fetch("/User/JwtTokens");
+        //    const data = await response.json();
+        //    console.log("Ajax GET success");
+        //    console.log(data);
+        //});
+    })
+
+</script>

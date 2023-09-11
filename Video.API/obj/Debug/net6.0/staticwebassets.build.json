@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "kFhIACnxUr3/gYH2JmyddgvmBCRMuQROJ3vw8OGROR8=",
+  "Source": "Video.API",
+  "BasePath": "_content/Video.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Video.API\\wwwroot",
+      "Source": "Video.API",
+      "ContentRoot": "C:\\Users\\s_vre\\Documents\\Algebra\\4. semestar\\Razvoj web aplikacija\\RWA Projekt za predaju\\VideoApp\\Video.API\\wwwroot\\",
+      "BasePath": "_content/Video.API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\s_vre\\Documents\\Algebra\\4. semestar\\Razvoj web aplikacija\\RWA Projekt za predaju\\VideoApp\\Video.API\\wwwroot\\message.html",
+      "SourceId": "Video.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\s_vre\\Documents\\Algebra\\4. semestar\\Razvoj web aplikacija\\RWA Projekt za predaju\\VideoApp\\Video.API\\wwwroot\\",
+      "BasePath": "_content/Video.API",
+      "RelativePath": "message.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\message.html"
+    }
+  ]
+}

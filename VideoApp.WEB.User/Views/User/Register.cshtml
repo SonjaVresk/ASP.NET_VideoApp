@@ -1,0 +1,114 @@
+﻿@model VideoApp.WEB.User.ViewModels.VMRegister
+
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="divCenter" style="width: 500px; margin-top:50px; ">
+
+<h1>Register</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" id="email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email2" class="control-label"></label>
+                <input asp-for="Email2" class="form-control" />
+                <span asp-validation-for="Email2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryId" class="control-label"></label>
+                <select asp-for="CountryId" asp-items="Model.Countries" class="form-control">
+                </select>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password2" class="control-label"></label>
+                <input asp-for="Password2" type="password" class="form-control" />
+                <span asp-validation-for="Password2" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                    <input type="submit" value="Register" id="registerButton" class="btn col-12" data-ajax-url="/User/Register" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+   @* <a asp-action="Index">Back to List</a>*@
+</div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<style>
+    .row{
+        padding-bottom: 20px;
+    }
+</style>
+
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script>
+
+    //$(document).ready(function () {
+    //    $("#registerButton").click(function () {
+    //        var email = $("#email").val();
+    //        var data = {
+    //            "email": email
+    //        };
+    //        var serializedData = JSON.stringify(data);
+
+    //        $.ajax({
+    //            type: "POST",
+    //            url: $(this).data("ajax-url"),
+    //            data: serializedData,
+    //            headers: {
+    //                'Accept': 'application/json',
+    //                'Content-Type': 'application/json'
+    //            },
+    //            success: function (response) {
+    //                console.log("Ajax POST success");
+    //                console.log(response);
+    //                // Ovdje možete manipulirati odgovorom, npr. prikazati poruku korisniku
+    //            },
+    //            error: function (response) {
+    //                console.log("Ajax POST error");
+    //                console.log(response);
+    //                // Ovdje možete manipulirati odgovorom u slučaju greške
+    //            }
+    //        });
+    //    });
+    //});
+
+</script>

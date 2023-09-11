@@ -1,0 +1,98 @@
+﻿@model VideoApp.BL.BLModels.BLVideo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@functions {
+    public string ConvertSeconds(int totalSeconds)
+    {
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        return $"{hours}h {minutes}m";
+    }
+}
+
+<h1 class="alert">Details</h1>
+
+<br />
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GenreId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GenreId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StreamingUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StreamingUrl)
+        </dd>
+@*        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImageId)
+        </dd>*@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Image.Content)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var tag in Model.Tags)
+            {
+                @Html.DisplayFor(modelItem => tag)
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Id  }, new { @class = "btn" }) |
+    @Html.ActionLink("Delete", "Delete", new {  id = Model.Id  }, new { @class = "btn" }) |
+    <a class="btnBack" asp-action="Index">Back to List</a>
+</div>

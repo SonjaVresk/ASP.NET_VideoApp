@@ -1,0 +1,48 @@
+﻿@using VideoApp.WEB.User.ViewModels;
+@model IEnumerable<VideoApp.WEB.User.ViewModels.VMVideo>
+
+@{
+    List<VMVideo> videos = ViewData["videos"] as List<VMVideo>;
+    int numRows = 2;
+    //int cardsPerRow = videos.Count / numRows;
+    ////int cardsPerRow = 3;
+    int cardsPerRow = Math.Max(videos.Count / numRows, 1);  
+}
+
+@functions {
+    public string ConvertSeconds(int totalSeconds)
+    {
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        return $"{hours}h {minutes}m";
+    }
+}
+
+@for (var i = 0; i < numRows; i++)
+{
+    <div class="row p-2 justify-content-around">
+        @foreach (var video in @videos.Skip(i * cardsPerRow).Take(cardsPerRow))
+        {
+            <div class="card col-3 m-3 services-card">
+                <div class="services-img-window img-center">
+                    @if (video.ImageId != null)
+                    {
+                        <img src="~/Images/@video.ImageURl" class="card-img-top img-fluid img-small">
+                    }
+                    else
+                    {
+                        @*<img src="/Images/movies.jpg" class="card-img-top img-fluid img-small">*@
+                        <img src="/Images/filmKamera.jpg" class="card-img-top img-fluid img-small">
+                    }
+
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">@video.Name</h3>
+                    <p class="card-text">@video.Description</p>
+                    <a class="btn" href="@Url.Action("Details", "Video", new { id = video.Id })">Details</a>
+
+                </div>
+            </div>
+        }
+   </div>
+}

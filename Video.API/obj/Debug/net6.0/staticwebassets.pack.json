@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\s_vre\\Documents\\Algebra\\4. semestar\\Razvoj web aplikacija\\RWA Projekt za predaju\\VideoApp\\Video.API\\wwwroot\\message.html",
+      "PackagePath": "staticwebassets\\message.html"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Video.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Video.API.props",
+      "PackagePath": "build\\Video.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Video.API.props",
+      "PackagePath": "buildMultiTargeting\\Video.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Video.API.props",
+      "PackagePath": "buildTransitive\\Video.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
